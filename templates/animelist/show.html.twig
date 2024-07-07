@@ -1,0 +1,31 @@
+{% extends 'animelist/index.html.twig' %}
+
+{% block title %}{{ anime.title }}{% endblock %}
+
+{% block body %}
+    {{ include('includes/navbar.html.twig') }}
+    <div class="anime-detail">
+        {% if anime.cover %}
+            <img src="{{ vich_uploader_asset(anime, 'coverFile') }}" alt="{{ anime.title }} cover image">
+        {% endif %}
+        <div>
+            <h1>{{ anime.title }}</h1>
+            <p>{{ anime.description }}</p>
+        </div>
+    </div>
+
+    <h2>All the episodes</h2>
+    <div class="episode-list">
+        {% for episode in episodes %}
+            <div class="episode-item">
+                {% if episode.cover %}
+                    <a href="{{ path('app_episode_watch', {'episodeId': episode.id, 'linkId': episode.links.first.id}) }}">
+                        <img src="{{ asset('images/episodes/' ~ episode.cover) }}" alt="{{ episode.number }} cover image">
+                    </a>
+                {% endif %}
+                <h3>Episode {{ episode.number }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+    {{ include('includes/footer.html.twig') }}
+{% endblock %}

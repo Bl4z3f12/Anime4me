@@ -1,0 +1,34 @@
+{# templates/base.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>   
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        {% block stylesheets %}
+
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+            {{ include('includes/_navbar.html.twig') }}
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                {{ include('includes/_sidebar.html.twig') }}
+            </aside>
+            <div class="content-wrapper">
+                <section class="content">
+                    <div class="container-fluid mt-2">
+                        {% block body %}{% endblock %}
+                    </div>
+                </section>
+            </div>
+            <footer class="main-footer">
+            </footer>
+        </div>
+    </body>
+</html>

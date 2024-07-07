@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime4me</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+{% block body %}
+   
+{{ include('includes/navbar.html.twig') }}
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>We have Every anime <br> you <span>want to watch</span> online</h1>
+            <p><br></p>
+            <a href="#" class="btn1">Discover Now</a>
+        </div>
+        <div class="image">
+            <img src="{{ asset('images/image.png') }}" alt="Lazy Loaded Image" loading="lazy" style="height: 390px;width:400px;margin-left:300px;">
+        </div>
+        
+    </section>
+
+    <section class="anime" id="anime">
+        <div class="heading">
+            <span>Anime List</span>
+            <h2>We have all types of Animes</h2>
+            <p>Enjoy watching all of your favorite animes online</p>
+        </div>
+        <div class="cars-container container">
+            {% for anime in animes %}
+                <div class="box">
+                    <h2>
+                        <a href="{{ path('app_anime_show', { id: anime.id }) }}">{{ anime.title }}</a>
+                    </h2>
+                    {% if anime.cover %}
+                    <a href="{{ path('app_anime_show', { id: anime.id }) }}"> <img src="{{ vich_uploader_asset(anime, 'coverFile') }}" alt="{{ anime.title }} cover image"></a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    
+    {{ include('includes/footer.html.twig') }}
+    <script>
+        let search = document.querySelector('.search-box');
+
+        document.querySelector('#search-icon').onclick = () => {
+            search.classList.toggle('active');
+            menu.classList.remove('active');
+        }
+
+        let menu = document.querySelector('.navbar');
+
+        document.querySelector('#menu-icon').onclick = () => {
+            menu.classList.toggle('active');
+            search.classList.remove('active');
+        }
+
+        window.onscroll = () => {
+            menu.classList.remove('active');
+            search.classList.remove('active');
+        }
+
+        let header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('shadow', window.scrollY > 0);
+        });
+
+    </script>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+{% endblock %}
+
+</html>

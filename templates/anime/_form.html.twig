@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+<div class="mb-3">
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.coverFile) }}
+    {{ form_widget(form.coverFile, {'attr': {'class': 'form-control'}}) }}
+</div>
+<button type="submit" class="btn btn-success">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

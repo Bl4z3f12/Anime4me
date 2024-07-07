@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+<div class="mb-3">
+    {{ form_row(form.number) }}
+</div>
+<div class="mb-3">
+    {{ form_row(form.coverFile) }}
+</div>
+<div class="mb-3">
+    {{ form_row(form.anime) }}
+</div>
+<div class="mt-2" {{ stimulus_controller('episode') }}  
+    data-episode-index-value="{{ form.links|length > 0 ? form.links|last.vars.name + 1 : 0 }}"
+    data-episode-prototype-value="{{ form_widget(form.links.vars.prototype)|e('html_attr') }}">
+    
+    <div class="row row-cols-1 row-cols-sm-2">
+        <div class="col">
+            <h5 class="my-2">Links:</h5>
+        </div>
+        <div class="col text-right">
+            <button type="button" class="btn btn-sm btn-info" {{ stimulus_action('episode', 'addCollectionElement') }}>Add link</button>
+        </div>
+    </div>
+    
+    <div class="mt-2" {{ stimulus_target('episode', 'container') }}>
+        {% for linkForm in form.links %}
+            {{ form_row(linkForm) }}
+        {% endfor %}
+    </div>
+</div>
+
+<button class="btn btn-primary btn-lg btn-block">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

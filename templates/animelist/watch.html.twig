@@ -1,0 +1,14 @@
+{% extends 'animelist/index.html.twig' %}
+{% block body %}
+{{ include('includes/navbar.html.twig') }}
+    <h1>Watch Episode {{ episode.number }}</h1>
+    <div class="episode-links">
+        {% for link in episode.links %}
+            <a href="{{ path('app_episode_watch', { 'episodeId': episode.id, 'linkId': link.id }) }}">link</a><br>
+        {% endfor %}
+    </div>
+    <div class="video-player">
+        <iframe id="video-frame" width="560" height="315" src="{{ link.url }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    {{ include('includes/footer.html.twig') }}
+{% endblock %}

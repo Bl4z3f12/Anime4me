@@ -1,0 +1,15 @@
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        anime_cover:
+            uri_prefix: /images/anime
+            upload_destination: '%kernel.project_dir%/public/images/anime'
+            # optionnally, specify one or more filename generators (identity, sha1, or uniqid)
+            namer:
+                service: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        episode_cover:
+            uri_prefix: /images/episodes
+            upload_destination: '%kernel.project_dir%/public/images/episodes'
+            namer:
+                service: Vich\UploaderBundle\Naming\SmartUniqueNamer

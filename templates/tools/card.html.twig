@@ -1,0 +1,18 @@
+
+<div class="card">
+{% block stylesheets %}
+{{ encore_entry_link_tags('app') }}
+{% endblock %}
+    <div class="card-header">
+        <h3 class="card-title">{% block card_title %}{% endblock %}</h3>
+        <div class="card-tools">
+            {% block card_tools %}{% endblock %}
+        </div>
+    </div>
+    <div class="card-body">
+        {% block card_body %}{% endblock %}
+    </div>    
+{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
+{% endblock %}
+</div>
