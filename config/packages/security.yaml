@@ -27,6 +27,8 @@ security:
                 lifetime: 604800
                 path: /
                 #always_remember_me: true
+            custom_authenticator: App\Security\UserAuthenticator
+                #always_remember_me: true
                 #always_remember_me: true
           
                 #always_remember_me: true

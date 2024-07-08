@@ -25,7 +25,6 @@
                 {% endif %}</td>
                 <td>{{ anime.updatedAt ? anime.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_anime_show', {'id': anime.id}) }}"class="btn btn-primary">show</a>
                     <a href="{{ path('app_anime_edit', {'id': anime.id}) }}"class="btn btn-primary">edit</a>
                 </td>
             </tr>

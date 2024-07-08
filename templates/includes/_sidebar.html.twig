@@ -1,82 +1,36 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="" class="brand-link">
-        <img src="{{ asset('images/logo1.png') }}" style="opacity: 0.8; max-width: 40%; height: auto;margin:0 auto;display:block">
+        <img src="{{ asset('images/log.png') }}" style="opacity: 0.8; max-width: 100%; height: auto; margin: 0 auto; display: block;">
     </a>
     
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="" class="img-circle elevation-2" alt="user">
+                <img src="{{ asset('images/user.png') }}" class="img-circle elevation-2" alt="user">
             </div>
             <div class="info">
                 {% if app.user %}
-                <a href="#" class="d-block">Hello Mr. {{ app.user.username }}</a>
-            {% else %}
-                <a href="#" class="d-block">Hello, Guest</a>
-            {% endif %}
+                    <a href="#" class="d-block">Hello Mr. {{ app.user.username }}</a>
+                {% else %}
+                    <a href="#" class="d-block">Hello, Guest</a>
+                {% endif %}
             </div>
         </div>
         
-       
-
-        <nav class="mt-2">
+        <nav>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Menu Section -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ path('app_anime_index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Menu
-                        </p>
+                        <p>Anime</p>
                     </a>
                 </li>
-
-                <!-- Dashboard Section -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>
-                            Product
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-list nav-icon"></i>
-                                <p>Product List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Add Pruduct</p>
-                            </a>
-                        </li>
-                     
-                    </ul>
-                </li>
-
-                <!-- Clients Section -->
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-user-tie"></i>
-                        <p>
-                            Client
-                        </p>
+                    <a href="{{ path('app_episode_index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Episode</p>
                     </a>
                 </li>
-
-                <!-- Locations Section -->
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-map-marked"></i>
-                        <p>
-                            Locations
-                        </p>
-                    </a>
-                </li>
-                <!-- More navigation items can be added similarly -->
             </ul>
         </nav>
     </div>
